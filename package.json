@@ -1,5 +1,5 @@
 {
-  "name": "redmine-cli",
+  "name": "redmine-cli-modified",
   "version": "0.8.1",
   "description": "A NodeJS Redmine client.",
   "preferGlobal": "true",
@@ -28,17 +28,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/a11n/RedmineCLI.git"
+    "url": "https://github.com/jamieabc/RedmineCLI"
   },
   "keywords": [
     "Redmine",
     "CLI",
     "REST"
   ],
-  "author": "André Diermann",
+  "author": "Aaron Chang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/a11n/RedmineCLI/issues"
+    "url": "https://github.com/jamieabc/RedmineCLI"
   },
-  "homepage": "https://github.com/a11n/RedmineCLI"
+  "homepage": "https://github.com/jamieabc/RedmineCLI"
 }
