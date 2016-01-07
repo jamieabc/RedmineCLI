@@ -175,6 +175,9 @@ exports.updateIssue = function(id, options){
     if(options.subject) issue.issue.subject = options.subject;
     if(options.description) issue.issue.description = options.description;
 
+    // for sprint, it is custom fields 2
+    if (options.sprint) issue.issue.custom_field_values = {"2" : options.sprint};
+
     var response = put('/issues/' + id + '.json', issue);
     if(response.statusCode != 200)
       throw 'Server responded with statuscode ' + response.statusCode;
@@ -195,6 +198,9 @@ exports.createIssue = function(project, subject, options){
     if(options.tracker)
       issue.issue.tracker_id = exports.getTrackerIdByName(options.tracker);
     if(options.description) issue.issue.description = options.description;
+
+    // for sprint, it is custom fields 2
+    if (options.sprint) issue.issue.custom_field_values = {"2" : options.sprint};
 
     var response = post('/issues.json', issue);
 
