@@ -175,6 +175,12 @@ exports.updateIssue = function(id, options){
     if(options.subject) issue.issue.subject = options.subject;
     if(options.description) issue.issue.description = options.description;
 
+    // for task done ratio
+    if(options.ratio) issue.issue.done_ratio = options.ratio;
+
+    // for task note
+    if(options.notes) issue.issue.notes = options.notes;
+
     // for sprint, it is custom fields 2
     if (options.sprint) issue.issue.custom_field_values = {"2" : options.sprint};
 

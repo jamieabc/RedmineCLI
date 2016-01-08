@@ -100,9 +100,12 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+### v0.8.3
+* New feature
+ * add option for 'notes' & 'done ratio'
 ### v0.8.2
 * New feature
-  * add custom field 'sprint' to 'Update Issues' & 'Create Issues'
+ * add custom field 'sprint' to 'Update Issues' & 'Create Issues'
 ### v0.8.0
 * New features
  * Update projects
