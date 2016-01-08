@@ -100,6 +100,9 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+### v0.8.2
+* New feature
+  * add custom field 'sprint' to 'Update Issues' & 'Create Issues'
 ### v0.8.0
 * New features
  * Update projects
