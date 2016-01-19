@@ -2,6 +2,7 @@ var swig = require('swig');
 var moment = require('moment');
 var Table = require('cli-table');
 var colors = require('colors');
+var osenv = require('osenv');
 
 var ago = function (input) {
   return moment(input).fromNow();

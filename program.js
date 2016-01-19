@@ -69,12 +69,6 @@ program
   .action(actions.handleIssue);
 
 program
-  .command('i <id>')
-  .description('Display issue details.')
-  .option('-H, --history', 'Include issue history (may increase loading time).')
-  .action(actions.handleIssue);
-
-program
   .command('update-issue <id>')
   .description('Update the specified issue.')
   .option('-P, --priority <priority>', 'Update the priority.')
