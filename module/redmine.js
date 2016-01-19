@@ -174,6 +174,7 @@ exports.updateIssue = function(id, options){
       issue.issue.tracker_id = exports.getTrackerIdByName(options.tracker);
     if(options.subject) issue.issue.subject = options.subject;
     if(options.description) issue.issue.description = options.description;
+    if (options.parent) issue.issue.parent_issue_id = options.parent;
 
     // for task done ratio
     if(options.ratio) issue.issue.done_ratio = options.ratio;
@@ -204,6 +205,7 @@ exports.createIssue = function(project, subject, options){
     if(options.tracker)
       issue.issue.tracker_id = exports.getTrackerIdByName(options.tracker);
     if(options.description) issue.issue.description = options.description;
+    if (options.parent) issue.issue.parent_issue_id = options.parent;
 
     // for sprint, it is custom fields 2
     if (options.sprint) issue.issue.custom_field_values = {"2" : options.sprint};
