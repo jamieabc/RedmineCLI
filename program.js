@@ -50,7 +50,26 @@ program
   .action(actions.handleIssues);
 
 program
+  .command('i')
+  .description('Display issues.')
+  .option('-p, --project <project>', 'Only display issues for the specified project.')
+  .option('-P, --priority <priority>', 'Only display issues with specified priority.')
+  .option('-a, --assignee <assignee>', 'Only display issues for the specified assignee.')
+  .option('-s, --status <status>', 'Only display issues with the specified status.')
+  .option('-t, --tracker <tracker>', 'Only display issues for the specified tracker.')
+  .option('-m, --me', 'Only display issues assigned to me.')
+  .option('-o, --open', 'Only display open issues.')
+  .option('-c, --closed', 'Only display closed issues.')
+  .action(actions.handleIssues);
+
+program
   .command('issue <id>')
+  .description('Display issue details.')
+  .option('-H, --history', 'Include issue history (may increase loading time).')
+  .action(actions.handleIssue);
+
+program
+  .command('i <id>')
   .description('Display issue details.')
   .option('-H, --history', 'Include issue history (may increase loading time).')
   .action(actions.handleIssue);
@@ -70,7 +89,33 @@ program
   .action(actions.handleUpdateIssue);
 
 program
+  .command('ui <id>')
+  .description('Update the specified issue.')
+  .option('-P, --priority <priority>', 'Update the priority.')
+  .option('-a, --assignee <userId>', 'Update the assignee.')
+  .option('-n, --notes <notes>', 'Update notes.')
+  .option('-r, --ratio <ratio>', 'Update done ratio value.')
+  .option('-w, --sprint <sprint>', 'Update sprint value.')
+  .option('-s, --status <status>', 'Update the status.')
+  .option('-t, --tracker <tracker>', 'Update the tracker.')
+  .option('-S, --subject <subject>', 'Update the subject.')
+  .option('-d, --description <description>', 'Update the description.')
+  .action(actions.handleUpdateIssue);
+
+program
   .command('create-issue <project> <subject>')
+  .description('Create a new issue.')
+  .option('-P, --priority <priority>', 'Create with priority.')
+  .option('-a, --assignee <userId>', 'Create with assignee.')
+  .option('-n, --notes <notes>', 'Update notes.')
+  .option('-w, --sprint <sprint>', 'Create with sprint.')
+  .option('-s, --status <status>', 'Create with status.')
+  .option('-t, --tracker <tracker>', 'Create with tracker.')
+  .option('-d, --description <description>', 'Create with description.')
+  .action(actions.handleCreateIssue);
+
+program
+  .command('ci <project> <subject>')
   .description('Create a new issue.')
   .option('-P, --priority <priority>', 'Create with priority.')
   .option('-a, --assignee <userId>', 'Create with assignee.')
