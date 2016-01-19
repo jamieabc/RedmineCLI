@@ -100,6 +100,11 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+### v0.8.4
+* New feature
+ * add option for 'parent'
+ * save configuration at user home directory
+ * add alias of 'create-issue' to 'ci', 'update-issue' to 'ui'
 ### v0.8.3
 * New feature
  * add option for 'notes' & 'done ratio'
