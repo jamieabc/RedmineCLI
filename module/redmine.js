@@ -3,8 +3,16 @@ var nconf = require('nconf');
 var openInBrowser = require('open');
 var querystring = require('querystring');
 var resolver = require('./resolver.js');
+var fs = require('fs');
+var osenv = require('osenv');
+var defaultDir = osenv.home() +  '/.redmine';
 
-nconf.file(__dirname + '/../config.json');
+// create default directory if not exist
+if (!fs.existsSync(defaultDir)) {
+  fs.mkdirSync(defaultDir);
+}
+
+nconf.file(defaultDir + '/config.json');
 
 var throwWhenNotConnected = function(){
   if(!nconf.get('serverUrl') || !nconf.get('apiKey'))
