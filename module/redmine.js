@@ -8,8 +8,8 @@ nconf.file(__dirname + '/../config.json');
 
 var throwWhenNotConnected = function(){
   if(!nconf.get('serverUrl') || !nconf.get('apiKey'))
-    throw 'Not connected.'
-}
+    throw 'Not connected.';
+};
 
 var req = function(method, serverUrl, apiKey, path, options){
   serverUrl = serverUrl || nconf.get('serverUrl');
@@ -18,19 +18,19 @@ var req = function(method, serverUrl, apiKey, path, options){
   var url = serverUrl + path;
   options.headers = {'X-Redmine-API-Key': apiKey};
   return request(method, url, options);
-}
+};
 
 var get = function(path, serverUrl, apiKey){
   return req('GET', serverUrl, apiKey, path, {});
-}
+};
 
 var put = function(path, body){
   return req('PUT', null, null, path, {'json': body});
-}
+};
 
 var post = function(path, body){
   return req('POST', null, null, path, {'json': body});
-}
+};
 
 exports.connect = function(serverUrl, apiKey){
   var response = get('/users/current.json', serverUrl, apiKey);
@@ -42,14 +42,14 @@ exports.connect = function(serverUrl, apiKey){
       user = user.user;
     else
       throw 'Invalid result';
-  } catch(err) {throw 'Connection to \'' + serverUrl + '\' failed.'};
+  } catch(err) {throw 'Connection to \'' + serverUrl + '\' failed.'; };
 
   nconf.set('serverUrl', serverUrl);
   nconf.set('apiKey', apiKey);
   nconf.save();
 
   return user;
-}
+};
 
 exports.getProjects = function(){
   throwWhenNotConnected();
@@ -57,8 +57,8 @@ exports.getProjects = function(){
   var response = get('/projects.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load projects.'}
-}
+  } catch(err) {throw 'Could not load projects.'; }
+};
 
 exports.getProject = function(identifier){
   throwWhenNotConnected();
@@ -66,8 +66,8 @@ exports.getProject = function(identifier){
   var response = get('/projects/'+ identifier +'.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load project.'}
-}
+  } catch(err) {throw 'Could not load project.'; }
+};
 
 exports.updateProject = function(identifier, options){
   throwWhenNotConnected();
@@ -84,8 +84,8 @@ exports.updateProject = function(identifier, options){
     if(response.statusCode != 200)
       throw 'Server responded with statuscode ' + response.statusCode;
 
-  } catch(err) {throw 'Could not update project:\n' + err}
-}
+  } catch(err) {throw 'Could not update project:\n' + err; }
+};
 
 exports.createProject = function(name, identifier, options){
   throwWhenNotConnected();
@@ -106,8 +106,8 @@ exports.createProject = function(name, identifier, options){
 
     var project = JSON.parse(response.getBody('utf8'));
     return project;
-  } catch(err) {throw 'Could not create project:\n' + err}
-}
+  } catch(err) {throw 'Could not create project:\n' + err; }
+};
 
 exports.getProjectMemberships = function(identifier){
   throwWhenNotConnected();
@@ -115,8 +115,8 @@ exports.getProjectMemberships = function(identifier){
   var response = get('/projects/'+ identifier +'/memberships.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load project memberships.'}
-}
+  } catch(err) {throw 'Could not load project memberships.'; }
+};
 
 exports.getProjectMembershipsGroupedByRole = function(identifier){
   var roles = {};
@@ -131,7 +131,7 @@ exports.getProjectMembershipsGroupedByRole = function(identifier){
   }
 
   return roles;
-}
+};
 
 exports.getIssues = function(filters){
   throwWhenNotConnected();
@@ -140,8 +140,8 @@ exports.getIssues = function(filters){
   var response = get('/issues.json' + (query ? '?' + query : query));
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load issues.'}
-}
+  } catch(err) {throw 'Could not load issues.'; }
+};
 
 exports.getIssue = function(id, options){
   throwWhenNotConnected();
@@ -156,8 +156,8 @@ exports.getIssue = function(id, options){
       resolver.resolveHistoryIdsToNames(issue.issue);
 
     return issue;
-  } catch(err) {throw 'Could not load issue.'}
-}
+  } catch(err) {throw 'Could not load issue.'; }
+};
 
 exports.updateIssue = function(id, options){
   throwWhenNotConnected();
@@ -187,8 +187,8 @@ exports.updateIssue = function(id, options){
     var response = put('/issues/' + id + '.json', issue);
     if(response.statusCode != 200)
       throw 'Server responded with statuscode ' + response.statusCode;
-  } catch(err) {throw 'Could not update issue:\n' + err }
-}
+  } catch(err) {throw 'Could not update issue:\n' + err; }
+};
 
 exports.createIssue = function(project, subject, options){
   throwWhenNotConnected();
@@ -220,8 +220,8 @@ exports.createIssue = function(project, subject, options){
 
     var issue = JSON.parse(response.getBody('utf8'));
     return issue;
-  } catch(err) {throw 'Could not create issue:\n' + err}
-}
+  } catch(err) {throw 'Could not create issue:\n' + err; }
+};
 
 exports.getStatuses = function(){
   throwWhenNotConnected();
@@ -229,8 +229,8 @@ exports.getStatuses = function(){
   var response = get('/issue_statuses.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load issue statuses.'}
-}
+  } catch(err) {throw 'Could not load issue statuses.'; }
+};
 
 exports.getStatusIdByName = function(name){
   var statuses = exports.getStatuses().issue_statuses;
@@ -240,7 +240,7 @@ exports.getStatusIdByName = function(name){
   }
 
   throw '\''+ name +'\' is no valid status.';
-}
+};
 
 exports.getStatusNameById = function(id){
   var statuses = exports.getStatuses().issue_statuses;
@@ -250,7 +250,7 @@ exports.getStatusNameById = function(id){
   }
 
   throw '\''+ id +'\' is no valid status id.';
-}
+};
 
 exports.getTrackers = function(){
   throwWhenNotConnected();
@@ -258,8 +258,8 @@ exports.getTrackers = function(){
   var response = get('/trackers.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load trackers.'}
-}
+  } catch(err) {throw 'Could not load trackers.'; }
+};
 
 exports.getTrackerIdByName = function(name){
   var trackers = exports.getTrackers().trackers;
@@ -269,7 +269,7 @@ exports.getTrackerIdByName = function(name){
   }
 
   throw '\''+ name +'\' is no valid tracker.';
-}
+};
 
 exports.getTrackerNameById = function(id){
   var trackers = exports.getTrackers().trackers;
@@ -279,7 +279,7 @@ exports.getTrackerNameById = function(id){
   }
 
   throw '\''+ id +'\' is no valid tracker id.';
-}
+};
 
 exports.getPriorities = function(){
   throwWhenNotConnected();
@@ -287,8 +287,8 @@ exports.getPriorities = function(){
   var response = get('/enumerations/issue_priorities.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load issue priorities.'}
-}
+  } catch(err) {throw 'Could not load issue priorities.'; }
+};
 
 exports.getPriorityIdByName = function(name){
   var priorities = exports.getPriorities().issue_priorities;
@@ -298,7 +298,7 @@ exports.getPriorityIdByName = function(name){
   }
 
   throw '\''+ name +'\' is no valid priority.';
-}
+};
 
 exports.getPriorityNameById = function(id){
   var priorities = exports.getPriorities().issue_priorities;
@@ -308,7 +308,7 @@ exports.getPriorityNameById = function(id){
   }
 
   throw '\''+ id +'\' is no valid priority id.';
-}
+};
 
 exports.getUsers = function(){
   throwWhenNotConnected();
@@ -316,8 +316,8 @@ exports.getUsers = function(){
   var response = get('/users.json');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load users.'}
-}
+  } catch(err) {throw 'Could not load users.'; }
+};
 
 exports.getUser = function(id){
   throwWhenNotConnected();
@@ -325,8 +325,8 @@ exports.getUser = function(id){
   var response = get('/users/' + id + '.json?include=memberships');
   try{
     return JSON.parse(response.getBody('utf8'));
-  } catch(err) {throw 'Could not load user.'}
-}
+  } catch(err) {throw 'Could not load user.'; }
+};
 
 exports.getAssigneeNameById = function(id){
   var users = exports.getUsers().users;
@@ -336,11 +336,11 @@ exports.getAssigneeNameById = function(id){
   }
 
   throw '\''+ id +'\' is no valid assignee id.';
-}
+};
 
 exports.open = function(id){
   throwWhenNotConnected();
 
   var url = nconf.get('serverUrl') + '/issues/' + id;
   openInBrowser(url);
-}
+};
