@@ -100,6 +100,9 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+### v0.8.6
+* New feature
+ * fix type error of 'parent'
 ### v0.8.5
 * New feature
  * add alias of 'issue detail' to 'id'

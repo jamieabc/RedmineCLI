@@ -182,7 +182,7 @@ exports.updateIssue = function(id, options){
       issue.issue.tracker_id = exports.getTrackerIdByName(options.tracker);
     if(options.subject) issue.issue.subject = options.subject;
     if(options.description) issue.issue.description = options.description;
-    if (options.parent) issue.issue.parent_issue_id = options.parent;
+    if (options.parent && typeof options.parent === 'string') issue.issue.parent_issue_id = options.parent;
 
     // for task done ratio
     if(options.ratio) issue.issue.done_ratio = options.ratio;

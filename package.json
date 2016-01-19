@@ -1,6 +1,6 @@
 {
   "name": "redmine-cli-modified",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "A NodeJS Redmine client.",
   "preferGlobal": "true",
   "directories": {
