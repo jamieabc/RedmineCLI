@@ -100,8 +100,11 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+### v0.8.7
+* Bug fix
+ * fix type error of 'parent' in all actions
 ### v0.8.6
-* New feature
+* Bug fix
  * fix type error of 'parent'
 ### v0.8.5
 * New feature
