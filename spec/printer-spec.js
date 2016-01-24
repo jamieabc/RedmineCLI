@@ -105,6 +105,19 @@ describe('printer.js', function() {
     expect(console.log).toHaveBeenCalledWith(out);
   });
 
+  it("should print parent", function() {
+    var parent = {id: {}};
+    var out = 'output';
+
+    spyOn(tmpl, 'renderFile').andReturn(out);
+    spyOn(console, 'log');
+
+    printer.printIssue(parent);
+
+    expect(tmpl.renderFile).toHaveBeenCalledWith('template/issue.tmpl', parent);
+    expect(console.log).toHaveBeenCalledWith(out);
+  });
+
   it("should print users", function() {
     var users = {users: []};
     var out = 'output';

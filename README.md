@@ -100,6 +100,9 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+### v0.8.8
+* New feature
+  * print parent id if exist
 ### v0.8.7
 * Bug fix
  * fix type error of 'parent' in all actions
