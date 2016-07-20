@@ -3,7 +3,7 @@ A NodeJS, stateful, console-based Redmine client.
 
 ## Installation & Setup
 ```shell
-npm install -g redmine-cli
+npm install -g redmine-cli-modified
 ```
 Connect to your Redmine instance.
 ```shell
@@ -100,29 +100,37 @@ HISTORY
 It's still under ~~active~~ development!
 
 ## Changelog
+
 ### v0.8.8
 * New feature
   * print parent id if exist
+
 ### v0.8.7
 * Bug fix
  * fix type error of 'parent' in all actions
+
 ### v0.8.6
 * Bug fix
  * fix type error of 'parent'
+
 ### v0.8.5
 * New feature
  * add alias of 'issue detail' to 'id'
+
 ### v0.8.4
 * New feature
  * add option for 'parent'
  * save configuration at user home directory
  * add alias of 'create-issue' to 'ci', 'update-issue' to 'ui'
+
 ### v0.8.3
 * New feature
  * add option for 'notes' & 'done ratio'
+
 ### v0.8.2
 * New feature
  * add custom field 'sprint' to 'Update Issues' & 'Create Issues'
+
 ### v0.8.0
 * New features
  * Update projects
