@@ -101,9 +101,14 @@ It's still under ~~active~~ development!
 
 ## Changelog
 
+### v0.8.11
+* Fixes
+  * set default issue list limit to 100 and offset from 0
+  
 ### v0.8.10
 * New feature
   * print parent id in issue list page
+  
 ### v0.8.8
 * New feature
   * print parent id if exist
