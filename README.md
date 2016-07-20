@@ -101,7 +101,7 @@ It's still under ~~active~~ development!
 
 ## Changelog
 
-### v0.8.9
+### v0.8.10
 * New feature
   * print parent id in issue list page
 ### v0.8.8
