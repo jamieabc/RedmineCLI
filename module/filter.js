@@ -22,6 +22,7 @@ exports.issuesFiltersFrom = function(options){
     'priority_id': options.priority || null,
     'assigned_to_id': options.assignee || null,
     'status_id': options.status || null,
+    'query_id': options.query || null,
     'tracker_id': options.tracker || null
   };
 

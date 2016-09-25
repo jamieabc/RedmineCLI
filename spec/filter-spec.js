@@ -14,7 +14,7 @@ describe('filter.js', function() {
 
     var actual = filter.issuesFiltersFrom(options);
     var expected = {priority_id : 1, assigned_to_id : 'me',
-                    status_id : 'closed', tracker_id : 1};
+                    status_id : 'closed', tracker_id : 1, offset: 0, limit: 100};
 
     expect(actual).toEqual(expected);
   });

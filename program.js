@@ -58,6 +58,13 @@ program
   .action(actions.handleIssue);
 
 program
+  .command('list')
+  .alias('l')
+  .description('List all un-resolved or un-closed issues.')
+  .option('-q, --query <query>', 'List custom query')
+  .action(actions.listCustomQuery);
+
+program
   .command('update-issue <id>')
   .alias('ui')
   .description('Update the specified issue.')

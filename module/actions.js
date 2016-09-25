@@ -41,6 +41,14 @@ exports.handleCreateProject = function(name, identifier, options){
   } catch(err){console.error(err)}
 }
 
+exports.listCustomQuery = function(options) {
+  try {
+    var filters = filter.issuesFiltersFrom(options);
+    var issues = redmine.query(filters);
+    printer.printIssues(issues);
+  } catch(err) {console.error(err);}
+};
+
 exports.handleIssues = function(options){
   try{
     var filters = filter.issuesFiltersFrom(options);

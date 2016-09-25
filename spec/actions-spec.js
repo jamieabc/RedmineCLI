@@ -118,7 +118,7 @@ describe('actions.js', function() {
     var issues = {issues: []};
     var filters = [{}];
 
-    spyOn(filter, 'issuesFiltersFrom').andReturn(filters)
+    spyOn(filter, 'issuesFiltersFrom').andReturn(filters);
     spyOn(redmine, 'getIssues').andReturn(issues);
     spyOn(printer, 'printIssues');
 

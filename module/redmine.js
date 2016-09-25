@@ -141,6 +141,16 @@ exports.getProjectMembershipsGroupedByRole = function(identifier){
   return roles;
 };
 
+exports.query = function(filters) {
+  throwWhenNotConnected();
+
+  var query = querystring.stringify(filters);
+  var response = get('/projects/dsp-ng/issues.json' + (query ? '?' + query : query));
+  try {
+    return JSON.parse(response.getBody('utf8'));
+  } catch(err) {throw 'Could not list costom query.';}
+};
+
 exports.getIssues = function(filters){
   throwWhenNotConnected();
 
