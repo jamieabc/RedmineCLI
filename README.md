@@ -101,6 +101,12 @@ It's still under ~~active~~ development!
 
 ## Changelog
 
+### v0.8.12
+* New feature
+  * add custome query for redmine to list un-resolved or un-closed issues
+* Fixed
+  * unit test
+  
 ### v0.8.11
 * Fixes
   * set default issue list limit to 100 and offset from 0
