@@ -52,7 +52,7 @@ exports.listCustomQuery = function(options) {
 exports.handleIssues = function(options){
   try{
     var filters = filter.issuesFiltersFrom(options);
-    var issues = redmine.getIssues(Object.assign({}, filters, {offset: 0, limit: 100})); // currently set limit to 100
+    var issues = redmine.getIssues(filters);
     printer.printIssues(issues);
   } catch(err){console.error(err)}
 }
